@@ -258,3 +258,24 @@ body.lvl6-page {
   0%, 50%, 100% { opacity: 1; }
   25%, 75% { opacity: 0; }
 }
+
+.lvl6-panel,
+.lvl6-footer {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.lvl6-panel.show,
+.lvl6-footer.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.lvl6-footer {
+  transition-delay: 0.12s;
+}

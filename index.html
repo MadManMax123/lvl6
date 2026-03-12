@@ -4,24 +4,33 @@
   <meta charset="UTF-8" />
   <title>NULL // Bytecode Engineering</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <link rel="stylesheet" href="/style.css" />
   <link rel="icon" type="image/png" href="11zon_cropped.png" />
 </head>
+
 <body class="lvl6-page">
+
   <div class="noise-overlay"></div>
   <div class="scanlines"></div>
   <div class="vignette"></div>
 
   <main class="lvl6-wrapper">
+
     <div class="lvl6-header">
       <div class="lvl6-tag">bytecode engineering // node 06</div>
+
       <h1>BYTECODE RELAY</h1>
+
+      <!-- Lore text will type here -->
       <p class="lvl6-sub" id="node-lore"></p>
     </div>
 
-    <section class="lvl6-panel">
+    <section class="lvl6-panel" id="lvl6-panel">
+
       <p class="lvl6-hint">
         download the archive and study the <code>.pyc</code> itself.<br />
+        NULL hint: humans read bytecode too. eventually.
       </p>
 
       <a class="lvl6-download" href="downloads/level6_payload.zip">
@@ -29,17 +38,21 @@
       </a>
 
       <p class="lvl6-note">
-        inside: a single <code>.pyc</code> file and its companion. NULL may have left a message and a decryption key<br />
+        inside: a single <code>.pyc</code> file and nothing else.<br />
         if you can’t read it, you’re not supposed to be here yet.
       </p>
+
     </section>
+
   </main>
 
-  <footer class="lvl6-footer">
+  <footer class="lvl6-footer" id="lvl6-footer">
     you won't need this site anymore.
   </footer>
-</body>
+
+
 <script>
+
 const loreLines = [
   "Node 6 used to be the primary encryption node for Artical.",
   "When the attack struck, this Node was permanently damaged.",
@@ -48,27 +61,52 @@ const loreLines = [
 ];
 
 const container = document.getElementById("node-lore");
+const panel = document.getElementById("lvl6-panel");
+const footer = document.getElementById("lvl6-footer");
 
 let lineIndex = 0;
 let charIndex = 0;
 
+function revealContent() {
+
+  panel.classList.add("show");
+  footer.classList.add("show");
+
+}
+
 function typeLine() {
-  if (lineIndex >= loreLines.length) return;
+
+  if (lineIndex >= loreLines.length) {
+    setTimeout(revealContent, 250);
+    return;
+  }
 
   const currentLine = loreLines[lineIndex];
 
   if (charIndex < currentLine.length) {
+
     container.innerHTML += currentLine.charAt(charIndex);
     charIndex++;
+
     setTimeout(typeLine, 35);
+
   } else {
-    container.innerHTML += "<br>";
+
+    if (lineIndex < loreLines.length - 1) {
+      container.innerHTML += "<br>";
+    }
+
     lineIndex++;
     charIndex = 0;
+
     setTimeout(typeLine, 600);
   }
+
 }
 
 setTimeout(typeLine, 800);
+
 </script>
+
+</body>
 </html>
