@@ -16,15 +16,12 @@
     <div class="lvl6-header">
       <div class="lvl6-tag">bytecode engineering // node 06</div>
       <h1>BYTECODE RELAY</h1>
-      <p class="lvl6-sub">
-        the source has been scrubbed. only compiled traces remain.
-      </p>
+      <p class="lvl6-sub" id="node-lore"></p>
     </div>
 
     <section class="lvl6-panel">
       <p class="lvl6-hint">
         download the archive and study the <code>.pyc</code> itself.<br />
-        NULL hint: humans read bytecode too. eventually.
       </p>
 
       <a class="lvl6-download" href="downloads/level6_payload.zip">
@@ -32,7 +29,7 @@
       </a>
 
       <p class="lvl6-note">
-        inside: a single <code>.pyc</code> file and nothing else.<br />
+        inside: a single <code>.pyc</code> file and its companion. NULL may have left a message and a decryption key<br />
         if you can’t read it, you’re not supposed to be here yet.
       </p>
     </section>
@@ -42,4 +39,36 @@
     you won't need this site anymore.
   </footer>
 </body>
+<script>
+const loreLines = [
+  "Node 6 used to be the primary encryption node for Artical.",
+  "When the attack struck, this Node was permanently damaged.",
+  "But closer investigation by the team has revealed that this Node has hidden compiler traces.",
+  "Maybe NULL has left a message...?"
+];
+
+const container = document.getElementById("node-lore");
+
+let lineIndex = 0;
+let charIndex = 0;
+
+function typeLine() {
+  if (lineIndex >= loreLines.length) return;
+
+  const currentLine = loreLines[lineIndex];
+
+  if (charIndex < currentLine.length) {
+    container.innerHTML += currentLine.charAt(charIndex);
+    charIndex++;
+    setTimeout(typeLine, 35);
+  } else {
+    container.innerHTML += "<br>";
+    lineIndex++;
+    charIndex = 0;
+    setTimeout(typeLine, 600);
+  }
+}
+
+setTimeout(typeLine, 800);
+</script>
 </html>
